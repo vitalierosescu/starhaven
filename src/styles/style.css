@@ -1,0 +1,54 @@
+[split-type] {
+  opacity: 1;
+}
+html.w-editor [split-type] {
+  opacity: 1;
+}
+
+.hero_logo_letter-wrapper {
+  /* overflow: ; */
+}
+
+.overview_content-item.is-active,
+.overview_img-item.is-active,
+.services_content-item.is-active,
+.services_img-item.is-active,
+.overview_tab-button.is-active {
+  opacity: 1 !important;
+}
+
+ .loader4_component {
+  display: flex;
+}
+
+.split-text {
+  overflow: hidden !important;
+}
+.line-animation {
+  overflow: hidden !important;
+}
+
+[split-type] {
+  visibility: hidden;
+}
+
+.w--editor [split-type] {
+  visibility: visible;
+}
+
+[split-type] .line {
+  overflow: hidden;
+}
+
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
