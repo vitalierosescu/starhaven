@@ -45,16 +45,16 @@ export default function loader() {
   });
 
   // Animate the width of the loader progress bar to 100% with the defined custom ease animation
-  const loaders = document.querySelectorAll('.loader4_progress-bar');
+  const loaders = document.querySelectorAll('.loader4_progress-bar-parent');
   loaders.forEach((loader, index) => {
     loader.style.opacity = `${0.8 - index * 0.08}`;
     console.log(loader.style.opacity);
   });
 
-  if (document.querySelector('.loader4_progress-bar')) {
+  if (document.querySelector('.loader4_progress-bar-parent')) {
     loaders.forEach((loader, index) => {
       gsap.to(loader, {
-        right: 0,
+        x: '99%',
         duration: loaderDuration - 0.2 + index * 0.08,
         ease: 'Quart.easeInOut',
       });

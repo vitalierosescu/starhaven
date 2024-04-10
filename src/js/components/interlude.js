@@ -10,8 +10,6 @@ export default function interlude() {
   let mm = gsap.matchMedia(),
     breakPoint = 479;
 
-  CustomEase.create('custom1', '0.49, 0.03, 0.13, 0.99)');
-
   mm.add(
     {
       isDesktop: `(min-width: ${breakPoint}px)`,
@@ -22,55 +20,80 @@ export default function interlude() {
 
       const triggerElement = document.querySelector('.interlude_wrapper');
 
+      gsap.defaults({ ease: 'none' });
+
+      const image = document.querySelector('.interlude_image');
+      const imageParent = document.querySelector('.interlude_image-parent');
+      const imageChild = document.querySelector('.interlude_image-child');
+
+      const imageFade = document.querySelector('.interlude_fade');
+
       // Parallax
       gsap
         .timeline({
           scrollTrigger: {
             trigger: triggerElement,
             start: 'top bottom',
-            end: 'bottom 70%',
+            end: 'bottom 120%',
             scrub: true,
           },
         })
         .fromTo(
-          '.interlude_image-child',
+          imageParent,
           {
             width: '0%',
+            height: '0%',
+            y: '20rem',
           },
           {
-            width: '50%',
+            width: '20%',
+            height: '50%',
+            y: '0rem',
           }
         )
-        .to('.interlude_image-parent', {
+        .fromTo(
+          image,
+          {
+            width: '80vw',
+            height: '80vh',
+          },
+          {
+            width: '140vw',
+            height: '140vh',
+          },
+          '<'
+        )
+        .to(imageParent, {
+          width: '100%',
           height: '100%',
         })
+        .fromTo(imageFade, { height: '200%' }, { height: '100%' }, '<')
         .to(
-          '.interlude_image-child',
+          imageChild,
           {
-            width: '100%',
-            height: '100%',
+            width: '100vw',
           },
           '<'
         )
         .to(
-          '.interlude_image',
+          image,
           {
-            width: '100%',
-            height: '100%',
+            width: '120vw',
+            height: '120vh',
           },
           '<'
         );
 
-      //   gsap.from('.section_services', {
-      //     y: '-120vh',
-      //     duration: 4,
-      //     scrollTrigger: {
-      //       trigger: '.interlude_trigger',
-      //       start: 'top bottom',
-      //       end: 'bottom bottom',
-      //       scrub: true,
-      //     },
-      //   });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: '.interlude_trigger',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+        .to('.interlude_image-parent', { y: '20vh' });
     }
   );
 }

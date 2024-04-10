@@ -10,14 +10,29 @@ import SplitType from 'split-type';
 import addLineInner from './js/utils/addlineInner';
 import interlude from './js/components/interlude';
 import subNav from './js/components/subNav';
+import Lenis from '@studio-freight/lenis';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
+
+CustomEase.create('smoothOut', '.39,0,.22,1');
+
+const lenis = new Lenis();
+
+setTimeout(() => {
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1200);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+}, 50);
 
 // Split the element with attribute [split-type]
 new SplitType('[split-type]', { types: 'lines', tagName: 'span' });
 
 // Custom easing
-CustomEase.create('magnus-opus', '0.49, 0.03, 0.13, 0.99)');
+// CustomEase.create('magnus-opus', '0.49, 0.03, 0.13, 0.99)');
 
 $('[split-type]').each(function (index) {
   gsap.set($(this), { autoAlpha: 1 });
@@ -43,11 +58,11 @@ setTimeout(() => {
       });
       tl.fromTo(
         textEl.find('.line-inner'),
-        { yPercent: 120 },
+        { yPercent: 100 },
         {
           yPercent: 0,
           duration: 1,
-          stagger: { amount: 0.1, ease: 'Quart.easeInOut' },
+          stagger: { amount: 0.1, ease: 'smoothOut' },
         }
       );
     }
@@ -68,7 +83,7 @@ setTimeout(() => {
 loader();
 // blob();
 challenges();
-cases();
+// cases();
 press();
 interlude();
 subNav();
