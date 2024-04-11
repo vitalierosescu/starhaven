@@ -23,7 +23,7 @@ export default function hero(initialDelay) {
         ease: 'smoothOut',
       });
 
-      // Timeline
+      // Intro animatino
       gsap
         .timeline()
         .from(
@@ -56,7 +56,7 @@ export default function hero(initialDelay) {
           .timeline({
             scrollTrigger: {
               trigger: '.section_hero',
-              start: 'top 4rem',
+              start: 'top top',
               end: 'bottom 60%',
               scrub: 1.2,
             },
@@ -64,6 +64,8 @@ export default function hero(initialDelay) {
           .to('.hero_image-wrapper', {
             height: '100svh',
             width: '72%',
+            ease: 'easeOut',
+            borderRadius: '32rem 32rem 0 0',
           })
           .to(
             '.hero_herald',

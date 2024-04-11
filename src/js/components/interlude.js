@@ -1,7 +1,7 @@
 import gsap from 'gsap';
-import { ScrollTrigger, CustomEase } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/all';
 
-gsap.registerPlugin(ScrollTrigger, CustomEase);
+gsap.registerPlugin(ScrollTrigger);
 
 //
 // THIS FUNCTION IS CALLED INSIDE loader.js

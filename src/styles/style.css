@@ -9,13 +9,13 @@ html.w-editor [split-type] {
   /* overflow: ; */
 }
 
-.overview_content-item.is-active,
+/* .overview_content-item.is-active,
 .overview_img-item.is-active,
 .services_content-item.is-active,
 .services_img-item.is-active,
 .overview_tab-button.is-active {
   opacity: 1 !important;
-}
+} */
 
  .loader4_component {
   display: flex;

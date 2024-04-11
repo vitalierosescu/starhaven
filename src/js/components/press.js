@@ -39,29 +39,33 @@ export default function press() {
       gsap
         .timeline()
         .from('.press_card.is-odd', {
-          xPercent: -20,
-          rotateZ: -12,
+          x: isDesktop ? '-20%' : '-24rem',
+          rotateZ: isDesktop ? -12 : 0,
           opacity: 0,
           yPercent: 10,
           scrollTrigger: {
             trigger: '.section_press',
             start: 'top bottom',
-            end: 'bottom 60%',
+            end: 'bottom 80%',
             scrub: true,
           },
         })
-        .from('.press_card.is-even', {
-          xPercent: 20,
-          rotateZ: 12,
-          opacity: 0,
-          yPercent: 10,
-          scrollTrigger: {
-            trigger: '.section_press',
-            start: 'top 80%',
-            end: 'bottom 50%',
-            scrub: true,
+        .from(
+          '.press_card.is-even',
+          {
+            x: isDesktop ? '20%' : '24rem',
+            rotateZ: isDesktop ? 12 : 0,
+            opacity: 0,
+            yPercent: 10,
+            scrollTrigger: {
+              trigger: '.section_press',
+              start: 'top 80%',
+              end: 'bottom 50%',
+              scrub: true,
+            },
           },
-        });
+          '0'
+        );
     }
   );
 }

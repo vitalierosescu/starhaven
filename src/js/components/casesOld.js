@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function cases() {
+export default function casesOld() {
   // Variables
   let totalSlides = $('.slider_item').length;
   let moveDistance = (totalSlides - 1) * -100;
@@ -19,17 +19,11 @@ export default function cases() {
       currSlide = Math.round(-toWhole / 100);
     },
   });
-  // if ($('.slider_list')) {
-  //   console.log('sliderlist is here');
-  //   tl.to('.slider_list', {
-  //     xPercent: moveDistance,
-  //     ease: 'none',
-  //   });
-  // }
 
   // cases
   gsap.set('.overview_content-item', { opacity: '0' });
   gsap.set('.overview_img-item', { opacity: '0' });
+
   // services
   gsap.set('.services_content-item', { opacity: '0' });
 
