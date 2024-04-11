@@ -17,6 +17,12 @@ export default function loader() {
     };
   }
 
+  window.addEventListener('resize', () => {
+    // setTimeout(() => {
+    document.querySelector('.loader4_component').style.display = 'none';
+    // }, 50);
+  });
+
   // Set the visited item in the session storage to "true"
   sessionStorage.setItem('visited', 'true');
 

@@ -52,3 +52,7 @@ html.lenis {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+.loader4_component {
+  display: flex;
+}
