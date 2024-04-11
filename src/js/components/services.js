@@ -97,6 +97,9 @@ export default function services() {
             leaveAnimation(services[2], tabs[2]);
           }
         },
+        onLeave: () => {
+          enterAnimation(services[2], tabs[2]);
+        },
       },
     });
 
