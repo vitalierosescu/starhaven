@@ -18,9 +18,10 @@ export default function loader() {
   }
 
   window.addEventListener('resize', () => {
-    // setTimeout(() => {
-    document.querySelector('.loader4_component').style.display = 'none';
-    // }, 50);
+    const loaderComponent = document.querySelector('.loader4_component');
+    if (loaderComponent) {
+      loaderComponent.style.display = 'none';
+    }
   });
 
   // Set the visited item in the session storage to "true"

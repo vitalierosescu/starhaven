@@ -14,84 +14,143 @@ export default function services() {
     const service2 = document.querySelector('.services_content-item._2');
     const service3 = document.querySelector('.services_content-item._3');
 
+    const services = document.querySelectorAll('.services_content-item');
+
     const tab1 = document.querySelector('.overview_tab-button._1');
     const tab2 = document.querySelector('.overview_tab-button._2');
     const tab3 = document.querySelector('.overview_tab-button._3');
 
+    const tabs = document.querySelectorAll('.overview_tab-button');
+
     const image = document.querySelector('.services_image');
 
-    const sectionTrigger = document.querySelector('.services_trigger');
+    const sectionComponent = document.querySelector('.services_component');
+    const sectionTrigger1 = document.querySelector('.services_trigger._1');
+    const sectionTrigger2 = document.querySelector('.services_trigger._2');
+    const sectionTrigger3 = document.querySelector('.services_trigger._3');
 
     let mainTl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionTrigger,
+        trigger: sectionTrigger1,
         start: 'top bottom',
         end: 'bottom bottom',
         scrub: true,
       },
     });
 
-    mainTl
-      .to(service1, {
-        opacity: 0,
-        duration: 1,
-      })
-      .to(
-        tab1,
-        {
-          opacity: 0.4,
-          duration: 1,
+    const enterAnimation = (service, tab) => {
+      service.classList.add('is-active');
+      tab.classList.add('is-active');
+    };
+
+    const leaveAnimation = (service, tab) => {
+      service.classList.remove('is-active');
+      tab.classList.remove('is-active');
+    };
+
+    // TIMELINE 1
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionTrigger1,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        onToggle: ({ self, isActive }) => {
+          if (isActive) {
+            enterAnimation(services[0], tabs[0]);
+          } else {
+            leaveAnimation(services[0], tabs[0]);
+          }
         },
-        '<'
-      )
-      .to(service2, {
-        opacity: 1,
-        duration: 1,
-      })
-      .to(service2, {
-        opacity: 0,
-        duration: 1,
-      })
-      .to(service3, {
-        opacity: 1,
-        duration: 1.5,
-      });
+      },
+    });
+
+    // TIMELINE 2
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionTrigger2,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        onToggle: ({ self, isActive }) => {
+          if (isActive) {
+            setTimeout(() => {
+              enterAnimation(services[1], tabs[1]);
+            }, 100);
+          } else {
+            leaveAnimation(services[1], tabs[1]);
+          }
+        },
+      },
+    });
+
+    // TIMELINE 3
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionTrigger3,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        onToggle: ({ self, isActive }) => {
+          if (isActive) {
+            setTimeout(() => {
+              enterAnimation(services[2], tabs[2]);
+            }, 100);
+          } else {
+            leaveAnimation(services[2], tabs[2]);
+          }
+        },
+      },
+    });
 
     // image
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: sectionTrigger,
+          trigger: sectionComponent,
           start: 'top bottom',
-          end: 'bottom bottom',
+          end: 'bottom 80%',
           scrub: true,
         },
       })
+      .fromTo(
+        image,
+        { rotateZ: '150deg' },
+        {
+          scale: 1.5,
+          ease: 'Quart.easeInOut',
+          y: '20%',
+          rotateZ: '0',
+        }
+      )
       .to(image, {
-        scale: 2,
-        ease: 'Quart.easeInOut',
-        y: '20%',
-      })
-      .to(image, {
-        scale: 3,
+        scale: 2.5,
         ease: 'Quart.easeInOut',
         y: '30%',
-      })
-      .to(
-        '.blob.is-services-bottom',
-        {
-          scale: 1.2,
-          y: '-30%',
+      });
+
+    // blob
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: sectionComponent,
+          start: 'top bottom',
+          end: 'bottom -40%',
+          scrub: true,
         },
-        0
+      })
+      .fromTo(
+        '.blob.is-services-bottom',
+        { scale: 0.8, y: '-50%' },
+        {
+          y: '40%',
+          scale: 1,
+        }
       );
 
     // scrollbar
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: sectionTrigger,
-          start: 'top bottom',
+          trigger: sectionComponent,
+          start: 'top 20%',
           end: 'bottom bottom',
           scrub: true,
         },

@@ -39,7 +39,6 @@ export default function subNav() {
 
           subNavScroller('challenges');
           subNavScroller('crew');
-          subNavScroller('cases');
           subNavScroller('services');
         });
 
