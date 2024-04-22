@@ -16,6 +16,7 @@ export default function cases() {
       let { isDesktop, isMobile, reduceMotion } = context.conditions;
 
       const cases = [...document.querySelectorAll('.cases_item.is-1')];
+      const overlay = document.querySelector('.cases_item-overlay');
 
       const setZIndex = (reverse, currentItem) => {
         cases.forEach((item) => {
@@ -87,21 +88,21 @@ export default function cases() {
             },
             '<.4'
           )
-          .fromTo('.cases_item-overlay', { opacity: 0 }, { opacity: 1 }, 0);
+          .fromTo(overlay, { opacity: 0 }, { opacity: 1 }, 0);
 
         // close overlay
-        document
-          .querySelector('.cases_item-overlay')
-          .addEventListener('click', (e) => {
-            clickTl.reverse();
-            setTimeout(() => {
-              setZIndex(true, caseItem);
-            }, 1000);
-            gsap.set(q('.cases_item-content'), { overflow: 'hidden' });
-          });
+        overlay.addEventListener('click', (e) => {
+          clickTl.reverse();
+          setTimeout(() => {
+            setZIndex(true, caseItem);
+            gsap.set(overlay, { display: 'none' });
+          }, 1000);
+          gsap.set(q('.cases_item-content'), { overflow: 'hidden' });
+        });
 
         caseItem.addEventListener('click', (e) => {
           clickTl.play();
+          gsap.set(overlay, { display: 'block' });
           setZIndex(false, caseItem);
         });
 

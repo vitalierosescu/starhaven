@@ -3,14 +3,11 @@ import { ScrollTrigger, CustomEase } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-//
-// THIS FUNCTION IS CALLED INSIDE loader.js
-//
 export default function press() {
   let mm = gsap.matchMedia(),
     breakPoint = 479;
 
-  CustomEase.create('custom1', '0.49, 0.03, 0.13, 0.99)');
+  // CustomEase.create('custom1', '0.49, 0.03, 0.13, 0.99)');
 
   mm.add(
     {
