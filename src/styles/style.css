@@ -17,7 +17,7 @@ html.w-editor [split-type] {
   opacity: 1 !important;
 } */
 
- .loader4_component {
+ .loader_component {
   display: flex;
 }
 
@@ -53,6 +53,6 @@ html.lenis {
   overflow: hidden;
 }
 
-.loader4_component {
+.loader_component {
   display: flex;
 }

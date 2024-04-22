@@ -4,28 +4,29 @@ import { CustomEase, ScrollTrigger } from 'gsap/all';
 import challenges from './js/components/challenges';
 import loader from './js/components/loader';
 import press from './js/components/press';
+import cases from './js/components/cases';
 import services from './js/components/services';
 import SplitType from 'split-type';
 import addLineInner from './js/utils/addlineInner';
 import interlude from './js/components/interlude';
 import subNav from './js/components/subNav';
-import Lenis from '@studio-freight/lenis';
+// import Lenis from '@studio-freight/lenis';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
 CustomEase.create('smoothOut', '.39,0,.22,1');
 
 // Lenis
-const lenis = new Lenis();
-setTimeout(() => {
-  lenis.on('scroll', ScrollTrigger.update);
+// const lenis = new Lenis();
+// setTimeout(() => {
+//   lenis.on('scroll', ScrollTrigger.update);
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1200);
-  });
+//   gsap.ticker.add((time) => {
+//     lenis.raf(time * 1200);
+//   });
 
-  gsap.ticker.lagSmoothing(0);
-}, 50);
+//   gsap.ticker.lagSmoothing(0);
+// }, 50);
 
 new SplitType('[split-type]', { types: 'lines', tagName: 'span' });
 
@@ -83,3 +84,4 @@ press();
 interlude();
 subNav();
 services();
+cases();

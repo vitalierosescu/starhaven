@@ -22,21 +22,5 @@ export default function blob() {
         { duration: 3000, fill: 'forwards' }
       );
     });
-
-    // blobChallenges.animate(
-    //   {
-    //     left: `${challengesX}px`,
-    //     top: `${challengesY}px`,
-    //   },
-    //   { duration: 3000, fill: 'forwards' }
-    // );
-
-    // blobHero.animate(
-    //   {
-    //     right: `${heroX}px`,
-    //     top: `${heroY}px`,
-    //   },
-    //   { duration: 3000, fill: 'forwards' }
-    // );
   };
 }

@@ -18,7 +18,7 @@ export default function loader() {
   }
 
   window.addEventListener('resize', () => {
-    const loaderComponent = document.querySelector('.loader4_component');
+    const loaderComponent = document.querySelector('.loader_component');
     if (loaderComponent) {
       loaderComponent.style.display = 'none';
     }
@@ -35,7 +35,7 @@ export default function loader() {
 
   // Define a function to end the loader animation
   function endLoaderAnimation() {
-    $('.loader4_ix-trigger').click();
+    $('.loader_ix-trigger').click();
   }
 
   // Create a timeline animation using the GreenSock Animation Platform (GSAP)
@@ -52,13 +52,13 @@ export default function loader() {
   });
 
   // Animate the width of the loader progress bar to 100% with the defined custom ease animation
-  const loaders = document.querySelectorAll('.loader4_progress-bar-parent');
+  const loaders = document.querySelectorAll('.loader_progress-bar-parent');
   loaders.forEach((loader, index) => {
     loader.style.opacity = `${0.8 - index * 0.08}`;
     console.log(loader.style.opacity);
   });
 
-  if (document.querySelector('.loader4_progress-bar-parent')) {
+  if (document.querySelector('.loader_progress-bar-parent')) {
     loaders.forEach((loader, index) => {
       gsap.to(loader, {
         x: '99%',
