@@ -1,10 +1,7 @@
-import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger, CustomEase } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
-
-const lenis = new Lenis();
 
 export default function subNav() {
   let mm = gsap.matchMedia(),
@@ -25,49 +22,40 @@ export default function subNav() {
 
         const subNavWrapper = document.querySelector('.sub-nav_wrapper');
         const subNav = document.querySelector('.sub-nav');
-        const subNavLinks = document.querySelectorAll('.sub-nav_link');
 
-        subNavLinks.forEach((link) => {
-          const subNavScroller = (section) => {
-            link.classList.contains(`is-${section}`)
-              ? link.addEventListener('click', () => {
-                  lenis.scrollTo(`#${section}`);
-                  lenis.stop();
-                })
-              : null;
-          };
+        let initialDirection = false;
 
-          subNavScroller('challenges');
-          subNavScroller('crew');
-          subNavScroller('services');
-        });
-
-        gsap.set(subNavWrapper, { display: 'none' });
-
-        let tl;
-        tl = gsap.timeline({
-          paused: true,
-          onReverseComplete: () => {
-            subNavWrapper.style.display = 'none';
-          },
-        });
-
-        tl.from(subNav, {
-          opacity: 0,
-          duration: 0.4,
-          yPercent: 20,
-          scrollTrigger: {
-            trigger: '.main-wrapper',
-            onUpdate: (self) => {
-              // Show & hide the navigation based on scroll direction
-              if (self.direction !== self.prevDirection) {
-                self.prevDirection = self.direction;
-                self.direction === 1 ? tl.reverse() : tl.play();
+        // Scroll Direction
+        ScrollTrigger.create({
+          trigger: '.page-wrapper',
+          start: 'top -600px',
+          end: 'bottom bottom',
+          onUpdate: (self) => {
+            if (self.direction !== self.prevDirection) {
+              if (initialDirection === false) {
+                initialDirection = true;
+                self.direction = -1;
               }
-            },
-          },
-          onStart: () => {
-            subNavWrapper.style.display = 'flex';
+              gsap.to(subNav, {
+                y: self.direction === -1 ? '0%' : '-120%',
+                opacity: self.direction === -1 ? 1 : 0,
+                duration: 1,
+                ease: 'smoothOut',
+                onStart: () => {
+                  // scrolling up
+                  if (self.direction === -1) {
+                    gsap.set(subNavWrapper, { display: 'flex' });
+                  }
+                },
+                onComplete: () => {
+                  // scrolling down
+                  if (self.direction === 1) {
+                    gsap.set(subNavWrapper, { display: 'none' });
+                  }
+                },
+              });
+              self.prevDirection = self.direction;
+            }
           },
         });
       }

@@ -30,7 +30,7 @@ export default function cases() {
 
         // HOVER TIMELINE
         let hoverTl = gsap.timeline({
-          defaults: { ease: 'none' },
+          defaults: { duration: 1 },
           paused: true,
         });
         hoverTl
@@ -41,18 +41,25 @@ export default function cases() {
             },
             {
               y: '-1rem',
-              duration: 1.2,
               ease: 'Quart.easeOut',
             }
+          )
+          .to(
+            q('.cases_item-image'),
+            {
+              opacity: 1,
+              stagger: 0,
+              duration: 0.4,
+            },
+            0
           )
           .from(
             q('.cases_item-title'),
             {
               y: '100%',
-              duration: 1.2,
               ease: 'smoothOut',
             },
-            '<'
+            0
           );
 
         // CLICK TIMELINE
@@ -74,6 +81,20 @@ export default function cases() {
             },
             0
           )
+          .fromTo(
+            '.cases_close',
+            {
+              opacity: 0,
+              display: 'none',
+              y: '1rem',
+            },
+            {
+              opacity: 1,
+              display: 'block',
+              y: '0rem',
+            },
+            0
+          )
           .from(
             q('.cases_item-text'),
             {
@@ -90,15 +111,29 @@ export default function cases() {
           )
           .fromTo(overlay, { opacity: 0 }, { opacity: 1 }, 0);
 
-        // close overlay
-        overlay.addEventListener('click', (e) => {
+        const closeOverlay = () => {
           clickTl.reverse();
           setTimeout(() => {
             setZIndex(true, caseItem);
             gsap.set(overlay, { display: 'none' });
           }, 1000);
           gsap.set(q('.cases_item-content'), { overflow: 'hidden' });
+          caseItem
+            .querySelector('.cases_item-content')
+            .removeAttribute('data-lenis-prevent');
+        };
+
+        // close overlay
+        overlay.addEventListener('click', (e) => {
+          closeOverlay();
         });
+
+        // close overlay
+        document
+          .querySelector('.cases_close')
+          .addEventListener('click', (e) => {
+            closeOverlay();
+          });
 
         caseItem.addEventListener('click', (e) => {
           clickTl.play();
@@ -108,17 +143,19 @@ export default function cases() {
 
         // HOVER eventlisteners
         caseItem.addEventListener('mouseenter', () => {
-          gsap.to(hoverTl, {
-            time: hoverTl.duration(),
-          });
+          hoverTl.play();
+          //   gsap.to(hoverTl, {
+          //     time: hoverTl.duration(),
+          //   });
         });
         caseItem.addEventListener('mouseleave', () => {
-          gsap.to(hoverTl, {
-            time: 0,
-            duration: 0.3,
-            ease: 'smoothOut',
-            overwrite: true,
-          });
+          hoverTl.reverse();
+          //   gsap.to(hoverTl, {
+          //     time: 0,
+          //     duration: 0.3,
+          //     ease: 'smoothOut',
+          //     overwrite: true,
+          //   });
         });
       });
     }
