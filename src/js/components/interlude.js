@@ -34,9 +34,9 @@ export default function interlude() {
       })
 
       tl.from(imageParent, { clipPath: 'polygon(50% 80%, 50% 80%, 50% 80%, 50% 80%)', y: '20rem' })
-        .from(image, { scale: 0.6 }, '<')
+        // .from(image, { scale: 0.6 }, '<')
         .to(imageParent, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' })
-        .to(image, { scale: 1.2 }, '<')
+      // .to(image, { scale: 1.2 }, '<')
 
       // gsap
       //   .timeline({
