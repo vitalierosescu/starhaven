@@ -36,7 +36,7 @@ export default function press() {
       gsap
         .timeline()
         .from('.press_card.is-odd', {
-          x: isDesktop ? '-20%' : '-24rem',
+          x: isDesktop ? '-20rem' : '-4rem',
           rotateZ: isDesktop ? -12 : 0,
           opacity: 0,
           yPercent: 10,
@@ -50,7 +50,7 @@ export default function press() {
         .from(
           '.press_card.is-even',
           {
-            x: isDesktop ? '24rem' : '24rem',
+            x: isDesktop ? '24rem' : '4rem',
             rotateZ: isDesktop ? 12 : 0,
             opacity: 0,
             yPercent: 10,
