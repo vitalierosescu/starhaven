@@ -22,13 +22,13 @@ export default function press() {
         stagger: 0.4,
       })
 
-      const oddOrEven = (target, value) => {
-        if (target.classList.contains('is-even')) {
-          return `-${value}%`
-        } else {
-          return `${value}%`
-        }
-      }
+      // const oddOrEven = (target, value) => {
+      //   if (target.classList.contains('is-even')) {
+      //     return `-${value}%`
+      //   } else {
+      //     return `${value}%`
+      //   }
+      // }
 
       gsap.set('.press_card-content.is-even', { transformOrigin: 'bottom left' })
 
@@ -50,7 +50,7 @@ export default function press() {
         .from(
           '.press_card-content.is-even',
           {
-            x: isDesktop ? '20%' : '24rem',
+            x: isDesktop ? '24rem' : '24rem',
             rotateZ: isDesktop ? 12 : 0,
             opacity: 0,
             yPercent: 10,
