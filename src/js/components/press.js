@@ -1,11 +1,11 @@
-import gsap from 'gsap';
-import { ScrollTrigger, CustomEase } from 'gsap/all';
+import gsap from 'gsap'
+import { ScrollTrigger, CustomEase } from 'gsap/all'
 
-gsap.registerPlugin(ScrollTrigger, CustomEase);
+gsap.registerPlugin(ScrollTrigger, CustomEase)
 
 export default function press() {
   let mm = gsap.matchMedia(),
-    breakPoint = 479;
+    breakPoint = 479
 
   // CustomEase.create('custom1', '0.49, 0.03, 0.13, 0.99)');
 
@@ -14,28 +14,28 @@ export default function press() {
       isDesktop: `(min-width: ${breakPoint}px)`,
       isMobile: `(max-width: ${breakPoint - 1}px)`,
     },
-    (context) => {
-      let { isDesktop, isMobile, reduceMotion } = context.conditions;
+    context => {
+      let { isDesktop, isMobile, reduceMotion } = context.conditions
 
       gsap.defaults({
         ease: 'power1.out',
         stagger: 0.4,
-      });
+      })
 
       const oddOrEven = (target, value) => {
         if (target.classList.contains('is-even')) {
-          return `-${value}%`;
+          return `-${value}%`
         } else {
-          return `${value}%`;
+          return `${value}%`
         }
-      };
+      }
 
-      gsap.set('.press_card.is-even', { transformOrigin: 'bottom left' });
+      gsap.set('.press_card-content.is-even', { transformOrigin: 'bottom left' })
 
       // Parallax
       gsap
         .timeline()
-        .from('.press_card.is-odd', {
+        .from('.press_card-content.is-odd', {
           x: isDesktop ? '-20%' : '-24rem',
           rotateZ: isDesktop ? -12 : 0,
           opacity: 0,
@@ -48,7 +48,7 @@ export default function press() {
           },
         })
         .from(
-          '.press_card.is-even',
+          '.press_card-content.is-even',
           {
             x: isDesktop ? '20%' : '24rem',
             rotateZ: isDesktop ? 12 : 0,
@@ -61,8 +61,8 @@ export default function press() {
               scrub: true,
             },
           },
-          '0'
-        );
-    }
-  );
+          '0',
+        )
+    },
+  )
 }
