@@ -42,7 +42,7 @@ setTimeout(() => {
           trigger: textElement,
           start: 'top bottom',
           end: 'bottom bottom',
-          toggleActions: 'none play none reset',
+          // toggleActions: 'none play none reset',
         },
       })
       tl.fromTo(

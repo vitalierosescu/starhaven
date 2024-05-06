@@ -30,12 +30,12 @@ export default function press() {
       //   }
       // }
 
-      gsap.set('.press_card-content.is-even', { transformOrigin: 'bottom left' })
+      gsap.set('.press_card.is-even', { transformOrigin: 'bottom left' })
 
       // Parallax
       gsap
         .timeline()
-        .from('.press_card-content.is-odd', {
+        .from('.press_card.is-odd', {
           x: isDesktop ? '-20%' : '-24rem',
           rotateZ: isDesktop ? -12 : 0,
           opacity: 0,
@@ -48,7 +48,7 @@ export default function press() {
           },
         })
         .from(
-          '.press_card-content.is-even',
+          '.press_card.is-even',
           {
             x: isDesktop ? '24rem' : '24rem',
             rotateZ: isDesktop ? 12 : 0,

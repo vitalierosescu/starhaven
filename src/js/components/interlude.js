@@ -22,11 +22,6 @@ export default function interlude() {
 
       const image = document.querySelector('.interlude_image')
       const imageParent = document.querySelector('.interlude_image-parent')
-      const imageChild = document.querySelector('.interlude_image-child')
-
-      const imageFade = document.querySelector('.interlude_fade')
-
-      // clip-path: polygon(40% 30%, 60% 30%, 60% 80%, 40% 80%);
 
       // Parallax
       let tl = gsap.timeline({
@@ -38,65 +33,10 @@ export default function interlude() {
         },
       })
 
-      tl.from(imageParent, { clipPath: 'polygon(50% 80%, 50% 80%, 50% 80%, 50% 80%)', y: '20rem', width: '50%' })
+      tl.from(imageParent, { clipPath: 'polygon(50% 80%, 50% 80%, 50% 80%, 50% 80%)', y: '20rem' })
         .from(image, { scale: 0.6 }, '<')
         .to(imageParent, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' })
         .to(image, { scale: 1.2 }, '<')
-
-      // gsap
-      //   .timeline({
-      //     scrollTrigger: {
-      //       trigger: triggerElement,
-      //       start: 'top bottom',
-      //       end: 'bottom 120%',
-      //       scrub: true,
-      //     },
-      //   })
-      //   .fromTo(
-      //     imageParent,
-      //     {
-      //       width: '0%',
-      //       height: '0%',
-      //       y: '20rem',
-      //     },
-      //     {
-      //       width: '20%',
-      //       height: '50%',
-      //       y: '0rem',
-      //     },
-      //   )
-      //   .fromTo(
-      //     image,
-      //     {
-      //       width: '80vw',
-      //       height: '80vh',
-      //     },
-      //     {
-      //       width: '140vw',
-      //       height: '140vh',
-      //     },
-      //     '<',
-      //   )
-      //   .to(imageParent, {
-      //     width: '100%',
-      //     height: '100%',
-      //   })
-      //   .fromTo(imageFade, { height: '200%' }, { height: '100%' }, '<')
-      //   .to(
-      //     imageChild,
-      //     {
-      //       width: '100vw',
-      //     },
-      //     '<',
-      //   )
-      //   .to(
-      //     image,
-      //     {
-      //       width: '120vw',
-      //       height: '120vh',
-      //     },
-      //     '<',
-      //   )
 
       // gsap
       //   .timeline({
