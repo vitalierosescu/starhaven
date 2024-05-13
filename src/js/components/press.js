@@ -7,8 +7,6 @@ export default function press() {
   let mm = gsap.matchMedia(),
     breakPoint = 479
 
-  // CustomEase.create('custom1', '0.49, 0.03, 0.13, 0.99)');
-
   mm.add(
     {
       isDesktop: `(min-width: ${breakPoint}px)`,
@@ -21,14 +19,6 @@ export default function press() {
         ease: 'power1.out',
         stagger: 0.4,
       })
-
-      // const oddOrEven = (target, value) => {
-      //   if (target.classList.contains('is-even')) {
-      //     return `-${value}%`
-      //   } else {
-      //     return `${value}%`
-      //   }
-      // }
 
       gsap.set('.press_card.is-even', { transformOrigin: 'bottom left' })
 

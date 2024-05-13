@@ -20,7 +20,7 @@ export default function interlude() {
 
       gsap.defaults({ ease: 'none' })
 
-      const image = document.querySelector('.interlude_image')
+      // const image = document.querySelector('.interlude_image')
       const imageParent = document.querySelector('.interlude_image-parent')
 
       // Parallax
@@ -33,21 +33,12 @@ export default function interlude() {
         },
       })
 
-      tl.from(imageParent, { clipPath: 'polygon(50% 80%, 50% 80%, 50% 80%, 50% 80%)', y: '20rem' })
-        // .from(image, { scale: 0.6 }, '<')
-        .to(imageParent, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' })
-      // .to(image, { scale: 1.2 }, '<')
-
-      // gsap
-      //   .timeline({
-      //     scrollTrigger: {
-      //       trigger: '.interlude_trigger',
-      //       start: 'top top',
-      //       end: 'bottom top',
-      //       scrub: true,
-      //     },
-      //   })
-      //   .to('.interlude_image-parent', { y: '20vh' })
+      tl.from(imageParent, {
+        clipPath: 'polygon(50% 80%, 50% 80%, 50% 80%, 50% 80%)',
+        y: '20rem',
+      }).to(imageParent, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      })
     },
   )
 }
