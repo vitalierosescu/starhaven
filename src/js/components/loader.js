@@ -11,9 +11,9 @@ export default function loader() {
   // Check if this is not the first time the user has visited this page
   if (sessionStorage.getItem('visited') !== null) {
     // If so, set the loader duration to 1 second and the counter value to 75
-    loaderDuration = 1.5
+    loaderDuration = 0.75
     counter = {
-      value: 75,
+      value: 0,
     }
   }
 
