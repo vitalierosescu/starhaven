@@ -4,7 +4,6 @@ import { CustomEase, ScrollTrigger } from 'gsap/all'
 import challenges from './js/components/challenges'
 import loader from './js/components/loader'
 import press from './js/components/press'
-// import cases from './js/components/cases'
 import services from './js/components/services'
 import SplitType from 'split-type'
 import addLineInner from './js/utils/addlineInner'
@@ -76,4 +75,3 @@ press()
 interlude()
 subNav()
 services()
-// cases()
