@@ -12,19 +12,32 @@ import subNav from './js/components/subNav'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 CustomEase.create('smoothOut', '.39,0,.22,1')
+
+function splitTextAgain() {
+  new SplitType('[split-type]', { types: 'lines', tagName: 'span' })
+  $('[split-type]').each(function () {
+    gsap.set($(this), { autoAlpha: 1 })
+    let textEl = $(this)
+    addLineInner(textEl)
+  })
+}
+
 new SplitType('[split-type]', { types: 'lines', tagName: 'span' })
 
-$('[split-type]').each(function (index) {
+$('[split-type]').each(function () {
   gsap.set($(this), { autoAlpha: 1 })
-  let textElement = $(this)
-  addLineInner(textElement)
+  let textEl = $(this)
+  addLineInner(textEl)
 })
 
+// Split the text again after 500ms to ensure correct splitting
+setTimeout(splitTextAgain, 500)
+
 setTimeout(() => {
-  $('[lines-slide-up]').each(function (index) {
-    let textElement = $(this)
-    let allLineElements = $('.line-inner')
-    let textContentRaw = textElement.find(allLineElements)
+  $('[lines-slide-up]').each(function () {
+    let textEl = $(this)
+    let lines = $('.line-inner')
+    let textContentRaw = textEl.find(lines)
     let textContent = ''
 
     textContentRaw.each(function () {
@@ -38,14 +51,13 @@ setTimeout(() => {
     function animateHeadings() {
       tl = gsap.timeline({
         scrollTrigger: {
-          trigger: textElement,
+          trigger: textEl,
           start: 'top bottom',
           end: 'bottom bottom',
-          // toggleActions: 'none play none reset',
         },
       })
       tl.fromTo(
-        textElement.find('.line-inner'),
+        textEl.find('.line-inner'),
         { yPercent: 105 },
         {
           yPercent: 5,
@@ -62,8 +74,7 @@ setTimeout(() => {
       if (windowWidth !== window.innerWidth) {
         windowWidth = window.innerWidth
         tl.kill()
-        textElement.text(textContent)
-        // animateHeadings()
+        textEl.text(textContent)
       }
     })
   })
