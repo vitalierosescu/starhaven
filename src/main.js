@@ -9,6 +9,7 @@ import SplitType from 'split-type'
 import addLineInner from './js/utils/addlineInner'
 import interlude from './js/components/interlude'
 import subNav from './js/components/subNav'
+import cases from './js/components/cases'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 CustomEase.create('smoothOut', '.39,0,.22,1')
@@ -86,3 +87,4 @@ press()
 interlude()
 subNav()
 services()
+cases()
