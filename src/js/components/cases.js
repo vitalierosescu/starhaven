@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import { ScrollTrigger, Draggable } from 'gsap/all'
+import { Draggable } from 'gsap/all'
 
 gsap.registerPlugin(Draggable, InertiaPlugin)
 
