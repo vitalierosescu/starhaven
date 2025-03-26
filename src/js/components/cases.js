@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { Draggable } from 'gsap/all'
 
-gsap.registerPlugin(Draggable, InertiaPlugin)
+// gsap.registerPlugin(Draggable, InertiaPlugin)
 
 export default function cases() {
   let mm = gsap.matchMedia(),
@@ -15,10 +15,7 @@ export default function cases() {
     context => {
       let { isDesktop, isMobile, reduceMotion } = context.conditions
 
-      gsap.registerPlugin(Draggable)
-
       function initSlider() {
-        const wrapper = document.querySelector('[data-slider="list"]')
         const slides = gsap.utils.toArray('[data-slider="slide"]')
 
         const nextButton = document.querySelector('[data-slider="button-next"]')
@@ -52,7 +49,7 @@ export default function cases() {
 
         const loop = horizontalLoop(slides, {
           paused: true,
-          draggable: true,
+          //   draggable: true,
           center: false,
           onChange: (element, index) => {
             // We add the active class to the 'next' element because our design is offset slightly.
@@ -303,10 +300,10 @@ export default function cases() {
                   ),
                 ),
               syncIndex = () => tl.closestIndex(true)
-            typeof InertiaPlugin === 'undefined' &&
-              console.warn(
-                'InertiaPlugin required for momentum-based scrolling and snapping. https://greensock.com/club',
-              )
+            // typeof InertiaPlugin === 'undefined' &&
+            //   console.warn(
+            //     'InertiaPlugin required for momentum-based scrolling and snapping. https://greensock.com/club',
+            //   )
             draggable = Draggable.create(proxy, {
               trigger: items[0].parentNode,
               type: 'x',
@@ -324,7 +321,7 @@ export default function cases() {
               onDrag: align,
               onThrowUpdate: align,
               overshootTolerance: 0,
-              inertia: true,
+              //   inertia: true,
               snap(value) {
                 if (Math.abs(startProgress / -ratio - this.x) < 10) {
                   return lastSnap + initChangeX

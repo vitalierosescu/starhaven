@@ -1,27 +1,27 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 //
 // THIS FUNCTION IS CALLED INSIDE loader.js
 //
 export default function hero(initialDelay) {
   let mm = gsap.matchMedia(),
-    breakPoint = 479;
+    breakPoint = 479
 
   mm.add(
     {
       isDesktop: `(min-width: ${breakPoint}px)`,
       isMobile: `(max-width: ${breakPoint - 1}px)`,
     },
-    (context) => {
-      let { isDesktop, isMobile, reduceMotion } = context.conditions;
+    context => {
+      let { isDesktop, isMobile, reduceMotion } = context.conditions
 
       gsap.defaults({
         // ease: 'Quart.easeOut',
         ease: 'smoothOut',
-      });
+      })
 
       // Intro animatino
       gsap
@@ -37,7 +37,7 @@ export default function hero(initialDelay) {
               from: 'center',
             },
           },
-          0
+          0,
         )
         .from(
           '.hero_slogan',
@@ -47,8 +47,8 @@ export default function hero(initialDelay) {
             delay: initialDelay + 0.7,
             stagger: 0.15,
           },
-          0
-        );
+          0,
+        )
 
       // Parallax
       if (isDesktop) {
@@ -61,20 +61,25 @@ export default function hero(initialDelay) {
               scrub: 1.2,
             },
           })
-          .to('.hero_image-wrapper', {
-            height: '100svh',
-            width: '72%',
-            ease: 'easeOut',
-            borderRadius: '32rem 32rem 0 0',
-          })
+          .fromTo(
+            '.hero_image-wrapper',
+            { scale: 1 },
+            {
+              // height: '100svh',
+              // width: '72%',
+              scale: 0.8,
+              ease: 'easeOut',
+              borderRadius: '32rem 32rem 0 0',
+            },
+          )
           .to(
             '.hero_herald',
             {
-              y: '-12rem',
+              y: '12rem',
             },
-            '<'
-          );
+            '<',
+          )
       }
-    }
-  );
+    },
+  )
 }
