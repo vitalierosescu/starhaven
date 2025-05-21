@@ -62,7 +62,7 @@ export default function hero(initialDelay) {
             },
           })
           .fromTo(
-            '.hero_image-wrapper',
+            '.hero_herald',
             { scale: 1 },
             {
               // height: '100svh',
