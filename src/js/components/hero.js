@@ -72,13 +72,6 @@ export default function hero(initialDelay) {
               borderRadius: '32rem 32rem 0 0',
             },
           )
-          .to(
-            '.hero_herald',
-            {
-              //y: '12rem',
-            },
-            '<',
-          )
       }
     },
   )

@@ -13,7 +13,7 @@ import cases from './js/components/cases'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 CustomEase.create('smoothOut', '.39,0,.22,1')
-
+// please work
 function splitTextAgain() {
   new SplitType('[split-type]', { types: 'lines', tagName: 'span' })
   $('[split-type]').each(function () {
