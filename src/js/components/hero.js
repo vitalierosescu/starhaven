@@ -75,7 +75,7 @@ export default function hero(initialDelay) {
           .to(
             '.hero_herald',
             {
-              y: '12rem',
+              //y: '12rem',
             },
             '<',
           )
